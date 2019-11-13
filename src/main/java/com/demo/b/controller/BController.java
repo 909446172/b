@@ -18,6 +18,8 @@ public class BController {
     @Autowired
     BService bService;
 
+
+
     @RequestMapping("b")
     public String b() {
         return bService.test1("---");
@@ -27,4 +29,10 @@ public class BController {
     public String bb() {
         return bService.services().toString();
     }
+
+    @RequestMapping("a")
+    public String a() {
+        return "aaaaaaaaaaa";
+    }
+
 }
