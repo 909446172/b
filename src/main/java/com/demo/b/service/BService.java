@@ -5,6 +5,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 /**
  * @author zyy
  * @version 1.0
@@ -15,5 +17,8 @@ public interface BService {
 
     @RequestMapping("/{test}/a")
     public String test1(@PathVariable String test);
+
+    @RequestMapping("/services")
+    public List<String> services();
 
 }
