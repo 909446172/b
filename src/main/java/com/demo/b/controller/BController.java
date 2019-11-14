@@ -44,4 +44,9 @@ public class BController {
         return discoveryClient.getServices().toString();
     }
 
+    @RequestMapping("test")
+    public String test() {
+        return "test";
+    }
+
 }
