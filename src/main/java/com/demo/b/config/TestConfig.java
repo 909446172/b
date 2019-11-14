@@ -3,6 +3,7 @@ package com.demo.b.config;
 import jdk.jfr.DataAmount;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @date 2019/11/14 17:13
  */
 @ConfigurationProperties("greeting")
-@Component
+@Configuration
 @Data
 public class TestConfig {
 
