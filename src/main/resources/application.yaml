@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    kubernetes:
+      config:
+        sources:
+          - name: demo
+        name: demo
+        namespace: default
+        enabled: true
+        enable-api: true
