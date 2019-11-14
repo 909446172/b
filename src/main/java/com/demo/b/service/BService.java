@@ -13,7 +13,7 @@ import java.util.List;
  * @version 1.0
  * @date 2019/11/13 15:08
  */
-@FeignClient(name="myapp",url = "http://192.168.64.130:30080")
+@FeignClient(name="myapp")
 public interface BService {
 
     @RequestMapping("/{test}/a")
