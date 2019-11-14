@@ -1,5 +1,6 @@
 package com.demo.b.controller;
 
+import com.demo.b.config.TestConfig;
 import com.demo.b.service.BService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -25,6 +26,14 @@ public class BController {
 
     @Autowired
     Environment environment;
+
+    @Autowired
+    TestConfig testConfig;
+
+    @RequestMapping("testConfig")
+    public String testConfig() {
+        return testConfig.getMessage();
+    }
 
     @RequestMapping("b")
     public String b() {
