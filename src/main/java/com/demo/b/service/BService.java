@@ -13,7 +13,7 @@ import java.util.List;
  * @version 1.0
  * @date 2019/11/13 15:08
  */
-@FeignClient(name="MYAPP_PORT")
+@FeignClient("myapp.default")
 public interface BService {
 
     @RequestMapping("/{test}/a")
