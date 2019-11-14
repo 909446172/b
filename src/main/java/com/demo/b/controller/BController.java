@@ -3,6 +3,7 @@ package com.demo.b.controller;
 import com.demo.b.service.BService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,8 @@ public class BController {
     @Autowired
     DiscoveryClient discoveryClient;
 
-
+    @Autowired
+    Environment environment;
 
     @RequestMapping("b")
     public String b() {
@@ -47,6 +49,13 @@ public class BController {
     @RequestMapping("test")
     public String test() {
         return "test";
+    }
+
+    @RequestMapping("/app")
+    public  String app() {
+        String property = environment.getProperty("spring.application.name");
+        System.out.println(property);
+        return property;
     }
 
 }
