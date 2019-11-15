@@ -7,8 +7,6 @@ spring:
         name: demo
         namespace: default
         sources:
-          - name: demo
-            namespace: defualt
           - name: demo1
             namespace: test
           - name: demo2
