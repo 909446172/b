@@ -2,8 +2,6 @@ spring:
   cloud:
     kubernetes:
       config:
-        enabled: true
-        enable-api: true
         sources:
           - name: demo
             namespace: default
