@@ -18,6 +18,10 @@ public class TestConfig {
 
     private String message;
 
+    private String messagetest;
+
+    private String messagedevelop;
+
 
 
 }

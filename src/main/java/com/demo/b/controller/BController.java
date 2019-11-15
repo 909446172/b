@@ -32,7 +32,7 @@ public class BController {
 
     @RequestMapping("testConfig")
     public String testConfig() {
-        return testConfig.getMessage();
+        return testConfig.toString();
     }
 
     @RequestMapping("b")
