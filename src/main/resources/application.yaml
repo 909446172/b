@@ -6,3 +6,10 @@ spring:
         enable-api: true
         name: demo
         namespace: default
+        sources:
+          - name: demo
+            namespace: defualt
+          - name: demo1
+            namespace: test
+          - name: demo2
+            namespace: develop
