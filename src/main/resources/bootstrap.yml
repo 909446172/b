@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    kubernetes:
+      config:
+        sources:
+          - name: demo
+            namespace: default
+          - name: demo1
+            namespace: test
+          - name: demo2
+            namespace: develop
+        enabled: true
