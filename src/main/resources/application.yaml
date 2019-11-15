@@ -4,9 +4,9 @@ spring:
       config:
         enabled: true
         enable-api: true
-        name: demo
-        namespace: default
         sources:
+          - name: demo
+            namespace: default
           - name: demo1
             namespace: test
           - name: demo2
