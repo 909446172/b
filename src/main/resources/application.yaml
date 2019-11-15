@@ -4,3 +4,5 @@ spring:
       config:
         sources:
           - name: demo
+        enabled: true
+        enable-api: true
