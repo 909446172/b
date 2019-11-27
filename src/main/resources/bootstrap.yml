@@ -5,8 +5,8 @@ spring:
         sources:
           - name: demo
             namespace: default
-          - name: demo1
+          - name: demo
             namespace: test
-          - name: demo2
+          - name: demo
             namespace: develop
-        enabled: true
+

@@ -56,13 +56,23 @@ public class BController {
     }
 
     @RequestMapping("test")
-    public String test() {
+    public String test() throws InterruptedException {
+
+        System.out.println("ready request");
+        Thread.sleep(10000L);
+        System.out.println("already request");
+
+
         return "test";
     }
 
     @RequestMapping("/app")
     public  String app() {
         String property = environment.getProperty("spring.application.name");
+        String tt = environment.getProperty("tt");
+        System.out.println(tt);
+        String a = environment.getProperty("a");
+        System.out.println(a);
         System.out.println(property);
         return property;
     }
