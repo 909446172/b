@@ -1,6 +1,7 @@
 FROM openjdk:11-jre
-VOLUME /root/app
+ARG JAR_FILE
 ENV PROFILE default
-ENV APPNAME b
-ADD target/b-0.0.1-SNAPSHOT.jar /app.jar
-ENTRYPOINT ["java","-Dspring.profiles.active=${PROFILE}","-Dspring.application.name=${APPNAME}","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENV JAVA_OPTS -server
+ENTRYPOINT java -Dspring.profiles.active=${PROFILE} -Duser.timezone=Asia/Shanghai ${JAVA_OPTS} -jar /usr/share/leve/app.jar
+EXPOSE 8761
+ADD target/${JAR_FILE} /usr/share/leve/app.jar
