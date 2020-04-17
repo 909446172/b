@@ -1,14 +1,18 @@
 package com.demo.b.controller;
 
+import com.demo.b.BadRequestException;
 import com.demo.b.config.TestConfig;
 import com.demo.b.service.BService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * @author zyy
@@ -56,14 +60,12 @@ public class BController {
     }
 
     @RequestMapping("test")
-    public String test() throws InterruptedException {
+    public Date test() throws InterruptedException {
 
         System.out.println("ready request");
-        Thread.sleep(10000L);
+//        Thread.sleep(10000L);
         System.out.println("already request");
-
-
-        return "test";
+        throw new BadRequestException("ddd", new Exception("-------------"));
     }
 
     @RequestMapping("/app")
