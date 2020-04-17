@@ -1,14 +1,18 @@
 package com.demo.b.controller;
 
 import com.demo.b.BadRequestException;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * @author zyy
@@ -16,19 +20,19 @@ import java.util.Date;
  * @date 2019/11/13 17:07
  */
 @RestController
+@AllArgsConstructor
 public class BController {
 
 //    @Autowired
 //    BService bService;
 
-    @Autowired
     DiscoveryClient discoveryClient;
 
-    @Autowired
     Environment environment;
 
-    @Autowired
     RestTemplate restTemplate;
+
+    WebClient webClient;
 
 //    @RequestMapping("testConfig")
 //    public String testConfig() {
@@ -40,6 +44,17 @@ public class BController {
         return restTemplate.getForObject("http://a/{test}/a", String.class, "aaaaaaaaaa");
     }
 
+    @RequestMapping("reactive")
+    public Mono<String> reactive() {
+        return webClient.get()
+                .uri("http://a/{test}/a", uriBuilder -> {
+                    HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+                    objectObjectHashMap.put("test", "reactive interface");
+                   return  uriBuilder.build(objectObjectHashMap);
+                })
+                .retrieve()
+                .bodyToMono(String.class);
+    }
 
 //    @RequestMapping("b")
 //    public String b() {
