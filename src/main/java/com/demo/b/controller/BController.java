@@ -1,17 +1,13 @@
 package com.demo.b.controller;
 
 import com.demo.b.BadRequestException;
-import com.demo.b.config.TestConfig;
-import com.demo.b.service.BService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -22,8 +18,8 @@ import java.util.Date;
 @RestController
 public class BController {
 
-    @Autowired
-    BService bService;
+//    @Autowired
+//    BService bService;
 
     @Autowired
     DiscoveryClient discoveryClient;
@@ -32,22 +28,28 @@ public class BController {
     Environment environment;
 
     @Autowired
-    TestConfig testConfig;
+    RestTemplate restTemplate;
 
-    @RequestMapping("testConfig")
-    public String testConfig() {
-        return testConfig.toString();
+//    @RequestMapping("testConfig")
+//    public String testConfig() {
+//        return testConfig.toString();
+//    }
+
+    @RequestMapping("rest")
+    public String rest() {
+        return restTemplate.getForObject("http://a/{test}/a", String.class, "aaaaaaaaaa");
     }
 
-    @RequestMapping("b")
-    public String b() {
-        return bService.test1("---");
-    }
 
-    @RequestMapping("bb")
-    public String bb() {
-        return bService.services().toString();
-    }
+//    @RequestMapping("b")
+//    public String b() {
+//        return bService.test1("---");
+//    }
+//
+//    @RequestMapping("bb")
+//    public String bb() {
+//        return bService.services().toString();
+//    }
 
     @RequestMapping("a")
     public String a() {
@@ -69,7 +71,7 @@ public class BController {
     }
 
     @RequestMapping("/app")
-    public  String app() {
+    public String app() {
         String property = environment.getProperty("spring.application.name");
         String tt = environment.getProperty("tt");
         System.out.println(tt);
