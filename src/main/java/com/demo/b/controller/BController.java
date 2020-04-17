@@ -11,6 +11,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -65,6 +68,12 @@ public class BController {
 //    public String bb() {
 //        return bService.services().toString();
 //    }
+
+    @RequestMapping
+    public  String inet() throws UnknownHostException, SocketException {
+        InetAddress inetAddress = InetAddress.getLocalHost();
+        return inetAddress.getHostAddress() + "\t" + inetAddress.getHostName() + "\t" + inetAddress.getCanonicalHostName();
+    }
 
     @RequestMapping("a")
     public String a() {
