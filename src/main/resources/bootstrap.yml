@@ -3,13 +3,13 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
-    kubernetes:
-      config:
-        sources:
-          - name: demo
-            namespace: default
-          - name: demo
-            namespace: test
-          - name: demo
-            namespace: develop
+#    kubernetes:
+#      config:
+#        sources:
+#          - name: demo
+#            namespace: default
+#          - name: demo
+#            namespace: test
+#          - name: demo
+#            namespace: develop
 
