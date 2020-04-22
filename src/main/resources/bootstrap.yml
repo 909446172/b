@@ -2,7 +2,7 @@ spring:
   cloud:
     loadbalancer:
       ribbon:
-        enabled: false
+        enabled: true
 #    kubernetes:
 #      config:
 #        sources:

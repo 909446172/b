@@ -3,20 +3,16 @@ package com.demo.b.controller;
 import com.demo.b.BadRequestException;
 import com.demo.b.service.BService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  * @author zyy
@@ -35,7 +31,7 @@ public class BController {
 
     RestTemplate restTemplate;
 
-    WebClient webClient;
+//    WebClient webClient;
 
 //    @RequestMapping("testConfig")
 //    public String testConfig() {
@@ -47,17 +43,17 @@ public class BController {
         return restTemplate.getForObject("http://a/{test}/a", String.class, "aaaaaaaaaa");
     }
 
-    @RequestMapping("reactive")
-    public Mono<String> reactive() {
-        return webClient.get()
-                .uri("http://a/{test}/a", uriBuilder -> {
-                    HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
-                    objectObjectHashMap.put("test", "reactive interface");
-                   return  uriBuilder.build(objectObjectHashMap);
-                })
-                .retrieve()
-                .bodyToMono(String.class);
-    }
+//    @RequestMapping("reactive")
+//    public Mono<String> reactive() {
+//        return webClient.get()
+//                .uri("http://a/{test}/a", uriBuilder -> {
+//                    HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
+//                    objectObjectHashMap.put("test", "reactive interface");
+//                   return  uriBuilder.build(objectObjectHashMap);
+//                })
+//                .retrieve()
+//                .bodyToMono(String.class);
+//    }
 
     @RequestMapping("b")
     public String b() {
@@ -70,7 +66,7 @@ public class BController {
     }
 
     @RequestMapping
-    public  String inet() throws UnknownHostException, SocketException {
+    public String inet() throws UnknownHostException, SocketException {
         InetAddress inetAddress = InetAddress.getLocalHost();
         return inetAddress.getHostAddress() + "\t" + inetAddress.getHostName() + "\t" + inetAddress.getCanonicalHostName();
     }
