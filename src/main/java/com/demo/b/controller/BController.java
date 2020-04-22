@@ -1,6 +1,7 @@
 package com.demo.b.controller;
 
 import com.demo.b.BadRequestException;
+import com.demo.b.service.BService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -26,8 +27,7 @@ import java.util.HashMap;
 @AllArgsConstructor
 public class BController {
 
-//    @Autowired
-//    BService bService;
+    BService bService;
 
     DiscoveryClient discoveryClient;
 
@@ -59,15 +59,15 @@ public class BController {
                 .bodyToMono(String.class);
     }
 
-//    @RequestMapping("b")
-//    public String b() {
-//        return bService.test1("---");
-//    }
-//
-//    @RequestMapping("bb")
-//    public String bb() {
-//        return bService.services().toString();
-//    }
+    @RequestMapping("b")
+    public String b() {
+        return bService.test1("---");
+    }
+
+    @RequestMapping("bb")
+    public String bb() {
+        return bService.services().toString();
+    }
 
     @RequestMapping
     public  String inet() throws UnknownHostException, SocketException {
