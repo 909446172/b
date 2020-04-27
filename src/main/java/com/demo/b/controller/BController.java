@@ -5,6 +5,7 @@ import com.demo.b.service.BService;
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -37,6 +38,11 @@ public class BController {
 //    public String testConfig() {
 //        return testConfig.toString();
 //    }
+
+    @GetMapping
+    public String docker() {
+        return "docker---------";
+    }
 
     @RequestMapping("rest")
     public String rest() {
